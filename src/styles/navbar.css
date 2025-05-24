@@ -1,0 +1,234 @@
+/* Base Styles */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+/* Logo Styles */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2e437d;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover .logo-icon {
+  transform: rotate(360deg);
+}
+
+/* Desktop Menu Layout */
+.navbar-center-links {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 1.5rem;
+}
+
+.navbar-right-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Link Styles */
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #2e437d;
+}
+
+.nav-link::after {
+  content: none; /* Menghapus garis bawah saat hover */
+}
+
+/* Button Styles */
+.nav-button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Tombol Login */
+.login-btn {
+  background-color: transparent;
+  color: #374f91;
+  border: 2px solid #374f91;
+}
+
+.login-btn:hover {
+  background-color: #e3e9f7;
+  transform: translateY(-2px);
+}
+
+/* Tombol Register */
+.register-btn {
+  background-color: #374f91;
+  color: white;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #374f91;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 0.8rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mobile-nav-link:hover {
+  background-color: #f1f8e9;
+  color: #4b6cc7;
+}
+
+/* Mobile Buttons */
+.mobile-nav-button {
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+/* Login Mobile */
+.mobile-nav-button.login-btn {
+  background-color: transparent;
+  color: #374f91;
+  border: 2px solid #374f91;
+}
+
+.mobile-nav-button.login-btn:hover {
+  background-color: #e3e9f7;
+  transform: translateY(-2px);
+}
+
+/* Register Mobile */
+.mobile-nav-button.register-btn {
+  background-color: #374f91;
+  color: white;
+}
+
+.mobile-nav-button.register-btn:hover {
+  background-color: #4b6cc7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-center-links,
+  .navbar-right-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .navbar-container {
+    padding: 1rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-link,
+.nav-button {
+  animation: fadeIn 0.5s ease forwards;
+}
