@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterForm from "../../components/auth/register-form";
 import api from "../../service/api";
+import { useAuth } from "../../context/AuthContext";
 import "../../styles/auth.css";
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleRegister = async (formData) => {
     setIsLoading(true);
@@ -15,9 +17,10 @@ const RegisterPage = () => {
 
     try {
       const response = await api.post("/auth/register", formData);
-      localStorage.setItem("authToken", response.data.token);
-      navigate("/dashboard");
+      login(response.data.token);
+      navigate("/");
     } catch (err) {
+      console.error("Register error details:", err.response);
       setError(err.response?.data?.message || "Registrasi gagal. Coba lagi.");
     } finally {
       setIsLoading(false);

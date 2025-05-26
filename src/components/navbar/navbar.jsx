@@ -1,21 +1,18 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { FaRecycle, FaBars, FaTimes } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
 import "../../styles/navbar.css";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
 
-  useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    setIsLoggedIn(!!token);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-    window.location.href = "/";
+  const handleLogoutClick = () => {
+    logout();
+    setIsMobileMenuOpen(false);
+    navigate("/login");
   };
 
   const toggleMobileMenu = () => {
@@ -25,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo" onClick={() => setIsMobileMenuOpen(false)}>
           <FaRecycle className="logo-icon" />
           <span>WasteSnap</span>
         </Link>
@@ -44,18 +41,18 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-right-links">
-          {isLoggedIn ? (
+          {isAuthenticated ? (
             <>
-              <Link to="/scan" className="nav-link">
+              <Link to="/pindai" className="nav-link">
                 Pindai Sampah
               </Link>
-              <Link to="/tps3r" className="nav-link">
+              <Link to="/temukan-tps3r" className="nav-link">
                 Temukan TPS3R
               </Link>
-              <Link to="/info" className="nav-link">
+              <Link to="/informasi" className="nav-link">
                 Informasi
               </Link>
-              <button onClick={handleLogout} className="nav-button logout-btn">
+              <button onClick={handleLogoutClick} className="nav-button logout-btn">
                 Logout
               </button>
             </>
@@ -97,31 +94,31 @@ const Navbar = () => {
           Kontak
         </Link>
 
-        {isLoggedIn ? (
+        {isAuthenticated ? (
           <>
             <Link
-              to="/scan"
+              to="/pindai"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >
               Pindai Sampah
             </Link>
             <Link
-              to="/tps3r"
+              to="/temukan-tps3r"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >
               Temukan TPS3R
             </Link>
             <Link
-              to="/info"
+              to="/informasi"
               className="mobile-nav-link"
               onClick={toggleMobileMenu}
             >
               Informasi
             </Link>
             <button
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               className="mobile-nav-button logout-btn"
             >
               Logout

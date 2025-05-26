@@ -4,7 +4,7 @@ import React from "react";
 const HomePage = () => {
   return (
     <div className="home-page">
-      <h1>Selamat Datang</h1>
+      <h1>hai udah login</h1>
       <p>Ini adalah halaman beranda</p>
     </div>
   );

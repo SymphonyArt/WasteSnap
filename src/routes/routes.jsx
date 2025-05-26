@@ -1,89 +1,58 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
-import App from "../App";
-import PublicLayout from "../components/navbar/privat-navbar";
-import PrivateLayout from "../components/navbar/navbar";
-import HomePage from "../pages/home-page";
-import AboutPage from "../pages/about-page";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import BerandaPage from "../pages/beranda-page";
 import LoginPage from "../pages/auth/login-page";
 import RegisterPage from "../pages/auth/register-page";
-import DashboardPage from "../pages/app/dashboard-page";
-import ScanWastePage from "../pages/app/scan-page";
-import FindTPS3RPage from "../pages/app/tps3r-page";
-import InformationPage from "../pages/app/informasi-page";
-import NotFoundPage from "../pages/not-found-page";
+import TentangKamiPage from "../pages/about-page";
+import PindaiPage from "../pages/app/scan-page"; // Tambahkan import ini
+import TemukanTps3rPage from "../pages/app/tps3r-page"; // Tambahkan jika digunakan
+import InformasiPage from "../pages/app/informasi-page"; // Tambahkan jika digunakan
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      // Public routes
-      {
-        element: <PublicLayout />,
-        children: [
-          { index: true, element: <HomePage /> },
-          { path: "tentang-kami", element: <AboutPage /> },
-          { path: "kontak", element: <kontakPage /> },
-          {
-            path: "login",
-            element: <LoginPage />,
-            loader: ({ request }) => {
-              // Prevent authenticated users from accessing login
-              const isAuthenticated = false; // Replace with actual auth check
-              if (isAuthenticated) {
-                throw new Response("", {
-                  status: 302,
-                  headers: { Location: "/beranda" },
-                });
-              }
-              return null;
-            },
-          },
-          {
-            path: "register",
-            element: <RegisterPage />,
-            loader: ({ request }) => {
-              // Prevent authenticated users from accessing register
-              const isAuthenticated = false; // Replace with actual auth check
-              if (isAuthenticated) {
-                throw new Response("", {
-                  status: 302,
-                  headers: { Location: "/beranda" },
-                });
-              }
-              return null;
-            },
-          },
-        ],
-      },
+const AppRoutes = () => {
+  const { isAuthenticated } = useAuth();
 
-      // Private routes
-      {
-        element: <PrivateLayout />,
-        loader: ({ request }) => {
-          // Protect private routes
-          const isAuthenticated = false; // Replace with actual auth check
-          if (!isAuthenticated) {
-            throw new Response("", {
-              status: 302,
-              headers: { Location: "/login" },
-            });
-          }
-          return null;
-        },
-        children: [
-          { path: "beranda", element: <DashboardPage /> },
-          { path: "pindai", element: <ScanWastePage /> },
-          { path: "temukan-tps3r", element: <FindTPS3RPage /> },
-          { path: "informasi", element: <InformationPage /> },
-        ],
-      },
+  return (
+    <Routes>
+      <Route path="/" element={<BerandaPage />} />
+      <Route path="/beranda" element={<BerandaPage />} />
+      <Route
+        path="/login"
+        element={
+          isAuthenticated ? <Navigate to="/beranda" replace /> : <LoginPage />
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          isAuthenticated ? <Navigate to="/beranda" replace /> : <RegisterPage />
+        }
+      />
+      <Route
+        path="/pindai"
+        element={
+          isAuthenticated ? <PindaiPage /> : <Navigate to="/login" replace />
+        }
+      />
+      {/* Tambahkan route lainnya dengan komponen yang sudah diimport */}
+      <Route path="/tentang-kami" element={<TentangKamiPage />} />
+      <Route
+        path="/temukan-tps3r"
+        element={
+          isAuthenticated ? (
+            <TemukanTps3rPage />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+      <Route
+        path="/informasi"
+        element={
+          isAuthenticated ? <InformasiPage /> : <Navigate to="/login" replace />
+        }
+      />
+    </Routes>
+  );
+};
 
-      // Error/fallback routes
-      { path: "not-found", element: <NotFoundPage /> },
-      { path: "*", element: <Navigate to="/not-found" replace /> },
-    ],
-  },
-]);
-
-export default router;
+export default AppRoutes;
