@@ -35,7 +35,7 @@ const BerandaPage = () => {
 
       {/* Fitur Section */}
       <section className="features-section">
-        <h2>Fitur Unggulan</h2>
+        <h2 className="judul">Fitur Unggulan</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">
@@ -84,36 +84,6 @@ const BerandaPage = () => {
             <div className="step-content">
               <h3>Temukan TPS3R</h3>
               <p>Lihat lokasi pembuangan terdekat berdasarkan jenis sampah</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* News Section */}
-      <section className="news-section">
-        <h2>Artikel Terbaru</h2>
-        <div className="news-grid">
-          <div className="news-card">
-            <img src="/images/recycling-article.jpg" alt="Recycling" />
-            <div className="news-content">
-              <h3>5 Langkah Mudah Memilah Sampah di Rumah</h3>
-              <p>
-                Pelajari cara memilah sampah organik dan anorganik dengan
-                benar...
-              </p>
-              <Link to="/article/1" className="read-more">
-                Baca Selengkapnya
-              </Link>
-            </div>
-          </div>
-          <div className="news-card">
-            <img src="/images/waste-bank.jpg" alt="Waste Bank" />
-            <div className="news-content">
-              <h3>Manfaat Bank Sampah untuk Lingkungan</h3>
-              <p>Bagaimana bank sampah bisa membantu mengurangi limbah...</p>
-              <Link to="/article/2" className="read-more">
-                Baca Selengkapnya
-              </Link>
             </div>
           </div>
         </div>

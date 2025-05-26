@@ -2,7 +2,7 @@
 .beranda-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0rem 1rem;
+  padding: 0 1rem;
   color: #2e437d;
 }
 
@@ -78,6 +78,12 @@ h2 {
   flex-wrap: wrap;
 }
 
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 4rem 1rem;
+  }
+}
+
 /* Button Styles */
 .primary-button,
 .secondary-button {
@@ -115,9 +121,13 @@ h2 {
 
 /* Features Section */
 .features-section {
-  background-color: #f9fafb;
+  background-color: #4b6cc7;
   border-radius: 16px;
-  padding: 4rem 2rem;
+  padding: 6rem 6rem;
+}
+
+.judul {
+  color: white;
 }
 
 .features-grid {
@@ -155,10 +165,65 @@ h2 {
   font-size: 0.95rem;
 }
 
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .features-section {
+    padding: 4rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    padding: 3rem 2rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+
+  .feature-icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-section {
+    padding: 2rem 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 1.25rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature-card p {
+    font-size: 0.85rem;
+  }
+
+  .feature-icon {
+    font-size: 1.6rem;
+  }
+}
+
 /* How It Works Section */
 .how-it-works {
   background-color: white;
-  padding: 4rem 2rem;
+  padding: 10rem 1rem;
 }
 
 .steps-container {
@@ -211,62 +276,63 @@ h2 {
   margin: 0;
 }
 
-/* News Section */
-.news-section {
-  background-color: #f9fafb;
-  border-radius: 16px;
-  padding: 4rem 2rem;
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+/* Tambahan untuk CTA agar nyaman di layar kecil */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
-.news-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
+/* Tambahan untuk .beranda-container padding di layar kecil */
+@media (max-width: 480px) {
+  .beranda-container {
+    padding: 0 1rem;
+  }
 
-.news-card:hover {
-  transform: translateY(-5px);
-}
+  .feature-card {
+    padding: 1rem;
+  }
 
-.news-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
+  .feature-card h3 {
+    font-size: 1rem;
+  }
 
-.news-content {
-  padding: 1.5rem;
-}
+  .feature-card p {
+    font-size: 0.85rem;
+  }
 
-.news-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #2e437d;
-}
-
-.news-content p {
-  color: #6b7280;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-.read-more {
-  color: #4b6cc7;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.read-more:hover {
-  text-decoration: underline;
+  .step-content p {
+    font-size: 0.85rem;
+  }
 }
 
 /* CTA Section */
@@ -274,7 +340,7 @@ h2 {
   background-color: #4b6cc7;
   color: white;
   border-radius: 16px;
-  padding: 4rem 2rem;
+  padding: 6rem 1rem;
   text-align: center;
 }
 

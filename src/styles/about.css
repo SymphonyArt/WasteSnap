@@ -34,24 +34,15 @@ body {
 
 /* About Section */
 .about-section {
-  padding: 80px 0;
+  padding: 6rem 1rem;
 }
 
 .section-title {
-  text-align: center;
+  text-align: start;
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: var(--dark-color); /* Now using dark blue */
   position: relative;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: var(--secondary-color); /* Now using light blue */
-  margin: 15px auto;
 }
 
 .section-subtitle {
@@ -98,4 +89,145 @@ body {
 .about-image img {
   max-width: 70%;
   height: auto;
+}
+
+/* Page ke 2 */
+.collaboration-section {
+  padding: 13rem 1rem;
+}
+
+.collab-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Logo wrapper menggunakan grid agar rapi */
+.collab-logos {
+  flex: 300px;
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Ukuran logo seragam */
+.collab-logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.collab-text {
+  flex: 1 1 300px;
+}
+
+.collab-text .section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 1rem;
+}
+
+.collab-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .collab-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .collab-text {
+    padding-top: 1rem;
+  }
+
+  .collab-logos {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .collab-logos img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* page ke 3 */
+.team-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.team-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 20px;
+}
+
+.team-description {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 500px;
+}
+
+.team-avatars {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-width: 320px;
+}
+
+.team-avatars .avatar {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-avatars .avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ccc;
+}
+
+.avatar.placeholder {
+  background-color: #cbe2ff;
+  border: 2px solid #999;
 }

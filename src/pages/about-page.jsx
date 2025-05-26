@@ -1,6 +1,13 @@
 import React from "react";
 import "../styles/about.css";
 import image from "../assets/image/about.png";
+import imageDevelopt1 from "../assets/developt/diva.png";
+import imageDevelopt2 from "../assets/developt/artur.png";
+import imageDevelopt3 from "../assets/developt/sakifa.jpg";
+import imageDevelopt4 from "../assets/developt/falen.png";
+import imageDevelopt5 from "../assets/developt/wildan.jpg";
+import imageDevelopt6 from "../assets/developt/yogi.jpg";
+import imageKolaborasi from "../assets/kolaborasi/kolaborasi.png";
 
 const AboutPage = () => {
   return (
@@ -23,53 +30,55 @@ const AboutPage = () => {
         </div>
       </div>
 
-      {/* Bagian 2: Misi Kami - Medical Theme */}
-      <div className="mission-section container">
-        <h2 className="section-title">Misi Kami</h2>
-        <p className="section-subtitle">
-          Komitmen kami terhadap kesehatan lingkungan dan masyarakat
-        </p>
-
-        <div className="mission-grid">
-          <div className="mission-card">
-            <div className="mission-icon">🏥</div>
-            <h3>Pengelolaan Limbah Medis</h3>
-            <p>
-              Menyediakan solusi khusus untuk pemilahan dan pengolahan limbah
-              medis yang aman sesuai standar kesehatan.
-            </p>
+      {/* Bagian 2: Kolaborasi Bersama Komunitas */}
+      <div className="collaboration-section container">
+        <div className="collab-wrapper">
+          {/* Kiri: Logo Komunitas */}
+          <div className="collab-logos">
+            <div className="logo-grid">
+              <img src={imageKolaborasi} alt="Logo" className="collab-logo" />
+            </div>
           </div>
 
-          <div className="mission-card">
-            <div className="mission-icon">🦠</div>
-            <h3>Pencegahan Infeksi</h3>
-            <p>
-              Meminimalisir risiko penularan penyakit melalui pengelolaan sampah
-              medis yang tepat dan hygienis.
-            </p>
-          </div>
-
-          <div className="mission-card">
-            <div className="mission-icon">💊</div>
-            <h3>Pengelolaan Obat Kadaluarsa</h3>
-            <p>
-              Sistem khusus untuk pembuangan obat-obatan kadaluarsa yang ramah
-              lingkungan dan mencegah penyalahgunaan.
-            </p>
-          </div>
-
-          <div className="mission-card">
-            <div className="mission-icon">🌡️</div>
-            <h3>Alat Kesehatan Berkelanjutan</h3>
-            <p>
-              Program daur ulang alat kesehatan sekali pakai yang memenuhi
-              standar sterilitas dan keamanan.
+          {/* Kanan: Teks */}
+          <div className="collab-text">
+            <h2 className="section-title">Kolaborasi Bersama Komunitas</h2>
+            <p className="collab-description">
+              WasteSnap bekerja sama dengan komunitas dan organisasi lingkungan
+              seperti AZWI, Greenpeace, Zero Waste Indonesia, Pilah Sampah,
+              Waste4Change, dan WWF untuk mendorong pengelolaan sampah yang
+              berkelanjutan.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Bagian 3: Team Kami */}
+      {/* Bagian 3: Tim Kami */}
+      <div className="team-section">
+        <div className="container">
+          <div className="content-wrapper">
+            {/* Kiri: Judul dan Deskripsi */}
+            <div className="team-text">
+              <h2 className="section-title">Tim Developt</h2>
+              <p className="team-description">
+                Dalam pengembangan web ini kami terdiri dari 6 anggota developt,
+                yaitu 3 <strong>frontend Backend (FEBE)</strong> dan 3{" "}
+                <strong>Machine Learning (ML)</strong>
+              </p>
+            </div>
+
+            {/* Kanan: Grid Gambar Anggota */}
+            <div className="team-avatars">
+              <img src={imageDevelopt1} alt="diva harahap" className="avatar" />
+              <img src={imageDevelopt2} alt="Member 2" className="avatar" />
+              <img src={imageDevelopt3} alt="Member 3" className="avatar" />
+              <img src={imageDevelopt4} alt="Member 4" className="avatar" />
+              <img src={imageDevelopt5} alt="Member 5" className="avatar" />
+              <img src={imageDevelopt6} alt="Yogi" className="avatar" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
