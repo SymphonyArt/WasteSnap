@@ -4,9 +4,11 @@ import BerandaPage from "../pages/beranda-page";
 import LoginPage from "../pages/auth/login-page";
 import RegisterPage from "../pages/auth/register-page";
 import TentangKamiPage from "../pages/about-page";
-import PindaiPage from "../pages/app/scan-page"; // Tambahkan import ini
-import TemukanTps3rPage from "../pages/app/tps3r-page"; // Tambahkan jika digunakan
-import InformasiPage from "../pages/app/informasi-page"; // Tambahkan jika digunakan
+import PindaiPage from "../pages/app/scan-page"; 
+import ProfilePage from "../pages/app/profile-page";
+import TemukanTps3rPage from "../pages/app/tps3r-page";
+import InformasiPage from "../pages/app/informasi-page";
+import EditProfilePage from "../pages/app/edit-profile-page";
 
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
@@ -49,6 +51,18 @@ const AppRoutes = () => {
         path="/informasi"
         element={
           isAuthenticated ? <InformasiPage /> : <Navigate to="/login" replace />
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          isAuthenticated ? <ProfilePage /> : <Navigate to="/login" replace />
+        }
+      />
+      <Route
+        path="/profile/edit"
+        element={
+          isAuthenticated ? <EditProfilePage /> : <Navigate to="/login" replace />
         }
       />
     </Routes>
