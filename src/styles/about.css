@@ -60,6 +60,7 @@ body {
   justify-content: space-between;
   margin-bottom: 80px;
   gap: 40px;
+  padding-top: -100px;
 }
 
 .about-text {
@@ -70,7 +71,7 @@ body {
 .about-title {
   font-size: 2.8rem;
   margin-bottom: 20px;
-  color: var(--dark-color); /* Now using dark blue */
+  color: var(--dark-color);
   line-height: 1.2;
 }
 
@@ -91,25 +92,79 @@ body {
   height: auto;
 }
 
-/* Page ke 2 */
+/* Responsive for tablets */
+@media (max-width: 768px) {
+  .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .about-text,
+  .about-image {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+
+  .about-image img {
+    max-width: 85%;
+  }
+}
+
+/* Responsive for phones */
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.6rem;
+  }
+
+  .about-description {
+    font-size: 0.75rem;
+  }
+
+  .about-wrapper {
+    gap: 20px;
+    margin-bottom: 50px;
+    padding: 0 15px;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+}
+
+/* Page ke 2 - Collaboration Section */
 .collaboration-section {
-  padding: 13rem 1rem;
+  padding: 8rem 1rem;
 }
 
 .collab-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Logo wrapper menggunakan grid agar rapi */
 .collab-logos {
-  flex: 300px;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   justify-items: center;
   align-items: center;
+  flex: 1;
+  min-width: 300px;
 }
 
 /* Ukuran logo seragam */
@@ -117,50 +172,138 @@ body {
   width: 100px;
   height: 100px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.collab-logo img:hover {
+  transform: scale(1.05);
 }
 
 .collab-text {
-  flex: 1 1 300px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .collab-text .section-title {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #0d47a1;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .collab-description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #444;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
 
-/* Responsif untuk layar kecil */
+/* Responsive untuk desktop medium */
+@media (max-width: 1024px) {
+  .collaboration-section {
+    padding: 6rem 1rem;
+  }
+
+  .collab-text .section-title {
+    font-size: 2.2rem;
+  }
+
+  .collab-description {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive untuk tablet */
 @media (max-width: 768px) {
   .collab-wrapper {
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
   }
 
   .collab-text {
-    padding-top: 1rem;
+    padding-top: 0;
+    order: -1;
   }
 
   .collab-logos {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
-  .collab-logos img {
-    width: 80px;
-    height: 80px;
+  .collab-logo img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Responsive untuk mobile besar */
+@media (max-width: 600px) {
+  .collaboration-section {
+    padding: 4rem 1rem;
+  }
+
+  .collab-text .section-title {
+    font-size: 1.8rem;
+  }
+
+  .collab-logos {
+    gap: 1rem;
+  }
+
+  .collab-logo img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Responsive untuk mobile kecil */
+@media (max-width: 480px) {
+  .collaboration-section {
+    padding: 3rem 1rem;
+  }
+
+  .collab-text .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .collab-description {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .collab-logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .collab-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+/* Responsive untuk mobile sangat kecil */
+@media (max-width: 360px) {
+  .collab-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .collab-logos {
+    gap: 0.6rem;
   }
 }
 
 /* page ke 3 */
 .team-section {
-  padding: 60px 20px;
-  background-color: #fff;
+  padding: 90px 50px;
   display: flex;
   justify-content: center;
 }

@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import api from "../../service/api";
 import { useNavigate } from "react-router-dom";
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaSave, FaTimes } from "react-icons/fa";
-import "../../styles/profile.css";
+import {
+  FaUser,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaSave,
+  FaTimes,
+} from "react-icons/fa";
+import "../../styles/edit-profile.css";
 
 const EditProfilePage = () => {
   const { user } = useAuth();
@@ -12,7 +19,7 @@ const EditProfilePage = () => {
     name: "",
     email: "",
     phone: "",
-    address: ""
+    address: "",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,7 +33,7 @@ const EditProfilePage = () => {
           name: response.data.name || "",
           email: response.data.email || "",
           phone: response.data.phone || "",
-          address: response.data.address || ""
+          address: response.data.address || "",
         });
       } catch (err) {
         console.error("Failed to fetch profile:", err);
@@ -37,15 +44,15 @@ const EditProfilePage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
     // Clear error when user types
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
@@ -74,7 +81,9 @@ const EditProfilePage = () => {
 
     try {
       await api.put("/auth/profile", formData);
-      navigate("/profile", { state: { success: "Profil berhasil diperbarui" } });
+      navigate("/profile", {
+        state: { success: "Profil berhasil diperbarui" },
+      });
     } catch (err) {
       console.error("Update failed:", err);
       setServerError(err.response?.data?.message || "Gagal memperbarui profil");
@@ -87,12 +96,6 @@ const EditProfilePage = () => {
     <div className="edit-profile-container">
       <div className="edit-profile-header">
         <h1>Edit Profil</h1>
-        <button 
-          className="btn-cancel"
-          onClick={() => navigate("/profile")}
-        >
-          <FaTimes /> Batal
-        </button>
       </div>
 
       {serverError && <div className="error-message">{serverError}</div>}
@@ -161,13 +164,12 @@ const EditProfilePage = () => {
         </div>
 
         <div className="form-actions">
-          <button 
-            type="submit" 
-            className="btn-save"
-            disabled={isSubmitting}
-          >
+          <button type="submit" className="btn-save" disabled={isSubmitting}>
             <FaSave />
-            {isSubmitting ? "Menyimpan..." : "Simpan Perubahan"}
+            {isSubmitting ? "Menyimpan..." : "Simpan"}
+          </button>
+          <button className="btn-cancel" onClick={() => navigate("/profile")}>
+            <FaTimes /> Batal
           </button>
         </div>
       </form>

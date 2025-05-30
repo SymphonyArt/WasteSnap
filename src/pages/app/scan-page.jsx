@@ -1,4 +1,5 @@
-const scanPage = () => {
+// src/pages/app/tps3r-page.jsx
+const ScanPage = () => {
   return (
     <div>
       <h1>Halaman TPS3R</h1>
@@ -7,4 +8,4 @@ const scanPage = () => {
   );
 };
 
-export default scanPage; // <-- Perubahan di sini
+export default ScanPage; // <-- Perubahan di sini

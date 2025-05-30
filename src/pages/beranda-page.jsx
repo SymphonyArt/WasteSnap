@@ -29,7 +29,7 @@ const BerandaPage = () => {
           </div>
         </div>
         <div className="hero-image">
-          <img src={image} alt="WasteSnap" />
+          <img src={image} alt="WasteSnap"/>
         </div>
       </section>
 
