@@ -1,4 +1,3 @@
-// home-page.jsx
 import React from "react";
 
 const beranda = () => {
@@ -10,4 +9,4 @@ const beranda = () => {
   );
 };
 
-export default beranda; // Default export
+export default beranda;

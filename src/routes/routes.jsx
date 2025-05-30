@@ -4,7 +4,7 @@ import BerandaPage from "../pages/beranda-page";
 import LoginPage from "../pages/auth/login-page";
 import RegisterPage from "../pages/auth/register-page";
 import TentangKamiPage from "../pages/about-page";
-import PindaiPage from "../pages/app/scan-page"; 
+import PindaiPage from "../pages/app/PindaiPage"; 
 import ProfilePage from "../pages/app/profile-page";
 import TemukanTps3rPage from "../pages/app/tps3r-page";
 import InformasiPage from "../pages/app/informasi-page";

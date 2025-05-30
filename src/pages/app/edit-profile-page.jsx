@@ -48,7 +48,7 @@ const EditProfilePage = () => {
       ...prev,
       [name]: value,
     }));
-    // Clear error when user types
+    
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,

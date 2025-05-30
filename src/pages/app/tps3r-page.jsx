@@ -1,4 +1,3 @@
-// src/pages/app/tps3r-page.jsx
 const FindTPS3RPage = () => {
   return (
     <div>
@@ -8,4 +7,4 @@ const FindTPS3RPage = () => {
   );
 };
 
-export default FindTPS3RPage; // <-- Perubahan di sini
+export default FindTPS3RPage;

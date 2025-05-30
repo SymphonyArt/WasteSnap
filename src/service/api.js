@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // Sesuaikan dengan URL backend Anda
+  baseURL: "http://localhost:5000/api", 
   headers: {
     "Content-Type": "application/json",
   },
@@ -26,7 +26,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token tidak valid atau expired
       localStorage.removeItem("authToken");
       window.location.href = "/login";
     }

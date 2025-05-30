@@ -1,4 +1,3 @@
-/* Global Styles */
 :root {
   --primary-color: #1976d2;
   --secondary-color: #64b5f6;
@@ -41,7 +40,7 @@ body {
   text-align: start;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: var(--dark-color); /* Now using dark blue */
+  color: var(--dark-color);
   position: relative;
 }
 
@@ -156,7 +155,7 @@ body {
   margin: 0 auto;
 }
 
-/* Logo wrapper menggunakan grid agar rapi */
+/* Logo wrapper menggunakan grid biar rapi anjay */
 .collab-logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

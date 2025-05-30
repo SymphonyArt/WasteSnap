@@ -7,4 +7,4 @@ const informasiPage = () => {
   );
 };
 
-export default informasiPage; // <-- Perubahan di sini
+export default informasiPage;
