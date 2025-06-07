@@ -29,6 +29,7 @@ body {
   padding: 0 20px;
   padding-top: 40px;
   padding-bottom: 40px;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 /* About Section */
@@ -126,7 +127,7 @@ body {
   }
 
   .about-description {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .about-wrapper {
@@ -142,161 +143,191 @@ body {
 
 /* Page ke 2 - Collaboration Section */
 .collaboration-section {
-  padding: 8rem 1rem;
+  padding: 8rem 2rem;
+  background-color: #f8f9fa;
 }
 
 .collab-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  max-width: 1200px;
+  gap: 4rem; /* Increased gap for desktop */
+  max-width: 1400px; /* Larger max-width for desktop */
   margin: 0 auto;
 }
 
-/* Logo wrapper menggunakan grid biar rapi anjay */
+/* Logo grid - fixed large size for desktop */
 .collab-logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem; /* Larger gap for desktop */
   justify-items: center;
   align-items: center;
-  flex: 1;
-  min-width: 300px;
+  width: 50%; /* Fixed width for desktop */
 }
 
-/* Ukuran logo seragam */
-.collab-logo img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+/* Large logo containers for desktop */
+.collab-logo {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100%;
   transition: transform 0.3s ease;
 }
 
-.collab-logo img:hover {
-  transform: scale(1.05);
+.collab-logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+  filter: grayscale(30%);
+  transition: all 0.3s ease;
+}
+
+.collab-logo:hover img {
+  transform: scale(1.1); /* Slightly larger hover effect for desktop */
+  filter: grayscale(0%);
 }
 
 .collab-text {
-  flex: 1;
-  min-width: 300px;
+  width: 40%; /* Fixed width for desktop */
 }
 
 .collab-text .section-title {
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Fixed large size for desktop */
   font-weight: 700;
   color: #0d47a1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   line-height: 1.2;
 }
 
 .collab-description {
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Fixed size for desktop */
   color: #444;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
-/* Responsive untuk desktop medium */
+/* Laptop/Desktop smaller screens */
+@media (max-width: 1440px) {
+  .collab-wrapper {
+    max-width: 1200px;
+    gap: 3rem;
+  }
+  
+  .collab-text .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Large tablets and small laptops */
 @media (max-width: 1024px) {
   .collaboration-section {
-    padding: 6rem 1rem;
+    padding: 6rem 2rem;
   }
-
+  
   .collab-text .section-title {
     font-size: 2.2rem;
   }
-
+  
   .collab-description {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .collab-logos {
+    gap: 1.5rem;
   }
 }
 
-/* Responsive untuk tablet */
+/* Tablet layout */
 @media (max-width: 768px) {
   .collab-wrapper {
     flex-direction: column;
     text-align: center;
-    gap: 2rem;
+    gap: 3rem;
+    max-width: 800px;
+  }
+
+  .collab-text, 
+  .collab-logos {
+    width: 100%;
   }
 
   .collab-text {
-    padding-top: 0;
-    order: -1;
-  }
-
-  .collab-logos {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .collab-logo img {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-/* Responsive untuk mobile besar */
-@media (max-width: 600px) {
-  .collaboration-section {
-    padding: 4rem 1rem;
-  }
-
-  .collab-text .section-title {
-    font-size: 1.8rem;
-  }
-
-  .collab-logos {
-    gap: 1rem;
-  }
-
-  .collab-logo img {
-    width: 70px;
-    height: 70px;
-  }
-}
-
-/* Responsive untuk mobile kecil */
-@media (max-width: 480px) {
-  .collaboration-section {
-    padding: 3rem 1rem;
-  }
-
-  .collab-text .section-title {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .collab-description {
-    font-size: 0.7rem;
-    line-height: 1.6;
-    text-align: center;
-  }
-
-  .collab-logo img {
-    width: 60px;
-    height: 60px;
+    padding: 0 2rem;
   }
 
   .collab-logos {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .collaboration-section {
+    padding: 4rem 1.5rem;
+  }
+  
+  .collab-text {
+    padding: 0 1rem;
+  }
+  
+  .collab-text .section-title {
+    font-size: 2rem;
+  }
+  
+  .collab-logos {
+    gap: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .collaboration-section {
+    padding: 3rem 1rem;
+  }
+  
+  .collab-text .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .collab-description {
+    font-size: 1rem;
+  }
+  
+  .collab-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .collab-text .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .collab-logos {
     gap: 0.8rem;
   }
 }
 
-/* Responsive untuk mobile sangat kecil */
-@media (max-width: 360px) {
-  .collab-logo img {
-    width: 50px;
-    height: 50px;
+/* Print styling */
+@media print {
+  .collaboration-section {
+    padding: 2rem 0;
+    break-inside: avoid;
   }
-
-  .collab-logos {
-    gap: 0.6rem;
+  
+  .collab-logo img {
+    filter: grayscale(100%) contrast(120%);
+    padding: 10%;
   }
 }
 

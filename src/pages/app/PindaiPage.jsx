@@ -71,7 +71,7 @@ const PindaiPage = () => {
 
   return (
     <div className="pindai-container">
-      <h1>Pindai Sampah</h1>
+      <h1>Pindai Sampah Anda</h1>
       
       <div className="tab-navigation">
         <button 
