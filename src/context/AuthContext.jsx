@@ -8,10 +8,31 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  // Check authentication status
+  const checkAuthStatus = () => {
+    return !!localStorage.getItem("authToken");
+  };
+
+  // Get auth token
+  const getAuthToken = () => {
+    return localStorage.getItem("authToken");
+  };
+
+  // Set auth token
+  const setAuthToken = (token) => {
+    localStorage.setItem("authToken", token);
+  };
+
+  // Remove auth token
+  const removeAuthToken = () => {
+    localStorage.removeItem("authToken");
+  };
+
+  // Main auth check function
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const token = localStorage.getItem("authToken");
+        const token = getAuthToken();
         if (token) {
           const response = await api.get("/auth/profile");
           setIsAuthenticated(true);
@@ -19,9 +40,7 @@ export const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         console.error("Auth check error:", error);
-        localStorage.removeItem("authToken");
-        setIsAuthenticated(false);
-        setUser(null);
+        handleAuthError();
       } finally {
         setIsLoading(false);
       }
@@ -30,20 +49,30 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
+  // Handle auth errors
+  const handleAuthError = () => {
+    removeAuthToken();
+    setIsAuthenticated(false);
+    setUser(null);
+  };
+
+  // Login function
   const login = async (token) => {
-    localStorage.setItem("authToken", token);
+    setAuthToken(token);
     try {
       const response = await api.get("/auth/profile");
       setIsAuthenticated(true);
       setUser(response.data);
     } catch (error) {
       console.error("Login error:", error);
-      logout();
+      handleAuthError();
+      throw error;
     }
   };
 
+  // Logout function
   const logout = () => {
-    localStorage.removeItem("authToken");
+    removeAuthToken();
     setIsAuthenticated(false);
     setUser(null);
   };
@@ -55,7 +84,9 @@ export const AuthProvider = ({ children }) => {
         isLoading,
         user,
         login,
-        logout
+        logout,
+        getAuthToken,
+        checkAuthStatus,
       }}
     >
       {!isLoading && children}
