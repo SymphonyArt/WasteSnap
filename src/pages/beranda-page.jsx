@@ -4,7 +4,6 @@ import {
   FaNewspaper,
   FaArrowRight,
   FaThList,
-  FaArrowRight,
 } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
@@ -47,7 +46,7 @@ const daftarProvinsi = [
   "Sulawesi Tengah", "Sulawesi Tenggara", "Sulawesi Utara",
   "Sumatera Barat", "Sumatera Selatan", "Sumatera Utara",
 ];
-import { useAuth } from "../context/authContext";
+
 
 const BerandaPage = () => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -190,9 +189,6 @@ const BerandaPage = () => {
       },
     },
   };
-
-  const { isAuthenticated, isLoading } = useAuth();
-
   if (isLoading) {
     return (
       <div className="loading-container">
