@@ -1,16 +1,29 @@
 import React from "react";
 import {
   FaRecycle,
-  FaSearch,
   FaMapMarkerAlt,
-  FaChartLine,
   FaNewspaper,
+  FaArrowRight,
+  FaThList,
+  FaChartLine,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/beranda.css";
 import image from "../assets/image/daur-ulang.png";
+import { useAuth } from "../context/authContext";
 
 const BerandaPage = () => {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>Memeriksa status login...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="beranda-container">
       {/* Hero Section */}
@@ -23,13 +36,19 @@ const BerandaPage = () => {
             Solusi pintar untuk pemilahan sampah dan menemukan TPS3R terdekat
           </p>
           <div className="hero-buttons">
-            <Link to="/register" className="primary-button">
-              Daftar Sekarang
-            </Link>
+            {isAuthenticated ? (
+              <Link to="/pindai" className="primary-button">
+                Mulai Memindai <FaArrowRight />
+              </Link>
+            ) : (
+              <Link to="/register" className="primary-button">
+                Daftar Sekarang
+              </Link>
+            )}
           </div>
         </div>
         <div className="hero-image">
-          <img src={image} alt="WasteSnap"/>
+          <img src={image} alt="WasteSnap" />
         </div>
       </section>
 
@@ -70,6 +89,11 @@ const BerandaPage = () => {
             <div className="step-content">
               <h3>Pindai Sampah</h3>
               <p>Gunakan kamera untuk memindai jenis sampah Anda</p>
+              {isAuthenticated && (
+                <Link to="/pindai" className="step-button">
+                  Coba Sekarang
+                </Link>
+              )}
             </div>
           </div>
           <div className="step">
@@ -77,6 +101,11 @@ const BerandaPage = () => {
             <div className="step-content">
               <h3>Dapatkan Informasi</h3>
               <p>Sistem akan mengenali jenis sampah dan cara pembuangannya</p>
+              {isAuthenticated && (
+                <Link to="/informasi" className="step-button">
+                  Coba Sekarang
+                </Link>
+              )}
             </div>
           </div>
           <div className="step">
@@ -84,26 +113,44 @@ const BerandaPage = () => {
             <div className="step-content">
               <h3>Temukan TPS3R</h3>
               <p>Lihat lokasi pembuangan terdekat berdasarkan jenis sampah</p>
+              {isAuthenticated && (
+                <Link to="/temukan-tps3r" className="step-button">
+                  Coba Sekarang
+                </Link>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-content">
-          <h2>Siap Mengelola Sampah dengan Lebih Baik?</h2>
-          <p>
-            Bergabunglah dengan WasteSnap sekarang dan mulai berkontribusi untuk
-            lingkungan yang lebih bersih
-          </p>
-          <div className="cta-buttons">
-            <Link to="/register" className="secondary-button">
-              Daftar Sekarang
-            </Link>
+      {isAuthenticated ? (
+        <section className="cta-section">
+          <div className="cta-content">
+            <h2>Temukan Lebih Banyak Fitur</h2>
+            <p>
+              Temukan beragam fitur unggulan WasteSnap untuk pengelolaan sampah
+              yang lebih cerdas, cepat, dan berkelanjutan. Dengan mengelola
+              limbah secara efisien
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="cta-section">
+          <div className="cta-content">
+            <h2>Siap Mengelola Sampah dengan Lebih Baik?</h2>
+            <p>
+              Bergabunglah dengan WasteSnap sekarang dan mulai berkontribusi
+              untuk lingkungan yang lebih bersih
+            </p>
+            <div className="cta-buttons">
+              <Link to="/register" className="secondary-button">
+                Daftar Sekarang
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };
