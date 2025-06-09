@@ -115,6 +115,7 @@ const wasteData = {
 };
 
 const ChatbotFab = () => {
+  const { isAuthenticated } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [conversation, setConversation] = useState({
     currentStep: 0,
@@ -506,6 +507,10 @@ const ChatbotFab = () => {
     }
     setIsOpen(!isOpen);
   };
+
+   if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>
