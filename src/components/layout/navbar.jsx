@@ -66,9 +66,7 @@ const Navbar = () => {
           <Link to="/" className="nav-link">
             Beranda
           </Link>
-          <Link to="/tentang-kami" className="nav-link">
-            Tentang Kami
-          </Link>
+
           {isAuthenticated && (
             <>
               <Link to="/pindai" className="nav-link">
@@ -82,6 +80,10 @@ const Navbar = () => {
               </Link>
             </>
           )}
+
+          <Link to="/tentang-kami" className="nav-link">
+            Tentang Kami
+          </Link>
         </div>
 
         <div className="navbar-right-links">

@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/about.css";
-import image from "../assets/image/about.png";
+import image from "../assets/image/Hand-coding-amico.svg";
 import imageDevelopt1 from "../assets/developt/diva.png";
 import imageDevelopt2 from "../assets/developt/artur.png";
 import imageDevelopt3 from "../assets/developt/sakifa.jpg";
