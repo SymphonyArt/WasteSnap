@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaComment, FaTimes, FaPaperPlane, FaRedo } from 'react-icons/fa';
+import { useAuth } from '../../context/AuthContext';
 import '../../styles/ChatbotFab.css';
 
 // nanti ganti aja mas mbak sesuai model dari ML ini saya pake data dummy
 const ChatbotFab = () => {
+  const { isAuthenticated } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [conversation, setConversation] = useState({
     currentStep: 0,
@@ -310,6 +312,10 @@ const ChatbotFab = () => {
       window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [isDragging]);
+
+   if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>
